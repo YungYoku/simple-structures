@@ -2,15 +2,15 @@ class Stack {
 	#array = []
 
 	add(value) {
-		this.#array.unshift(value)
+		this.#array.push(value)
 	}
 
 	pop() {
-		return this.#array.shift()
+		return this.#array.pop()
 	}
 
 	peek() {
-		return this.#array[0]
+		return this.#array[this.#array.length - 1]
 	}
 
 	isEmpty() {
