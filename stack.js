@@ -1,20 +1,61 @@
+class StackItem {
+	#value
+	#next
+
+	constructor(value) {
+		this.#value = value
+	}
+
+	getValue() {
+		return this.#value
+	}
+
+	getNext() {
+		return this.#next
+	}
+
+	setNext(queueItem) {
+		this.#next = queueItem
+	}
+}
+
 class Stack {
-	#array = []
+	#top = null
+
+	isEmpty() {
+		return this.#top === null
+	}
 
 	add(value) {
-		this.#array.push(value)
+		const item = new StackItem(value)
+
+		if (this.isEmpty()) {
+			this.#top = item
+		} else {
+			item.setNext(this.#top)
+
+			this.#top = item
+		}
 	}
 
 	pop() {
-		return this.#array.pop()
+		if (this.#top) {
+			const value = this.#top.getValue()
+
+			this.#top = this.#top.getNext()
+
+			return value
+		}
+
+		return null
 	}
 
 	peek() {
-		return this.#array[this.#array.length - 1]
-	}
+		if (this.#top) {
+			return this.#top.getValue()
+		}
 
-	isEmpty() {
-		return this.#array.length === 0
+		return null
 	}
 }
 
