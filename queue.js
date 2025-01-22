@@ -1,4 +1,4 @@
-class QueueItem {
+export class QueueItem {
 	#value
 	#next
 
@@ -19,46 +19,55 @@ class QueueItem {
 	}
 }
 
-class Queue {
+export class Queue {
 	#first = null
 	#last = null
 
+	getFirst() {
+		return this.#first
+	}
+
+	setFirst(queueItem) {
+		this.#first = queueItem
+	}
+
+	getLast() {
+		return this.#last
+	}
+
+	setLast(queueItem) {
+		this.#last = queueItem
+	}
+
 	isEmpty() {
-		return this.#first === null && this.#last === null
+		return this.getFirst() === null && this.getLast() === null
 	}
 
 	insert(value) {
 		const item = new QueueItem(value)
 
 		if (this.isEmpty()) {
-			this.#first = item
-			this.#last = item
+			this.setFirst(item)
 		} else {
-			this.#last.setNext(item)
-
-			this.#last = item
+			this.getLast().setNext(item)
 		}
+
+		this.setLast(item)
 	}
 
 	remove() {
-		if (this.#first) {
-			const value = this.#first.getValue()
+		if (this.isEmpty()) return null
 
-			this.#first = this.#first.getNext()
+		const value = this.getFirst().getValue()
 
-			return value
-		}
+		this.setFirst(this.getFirst().getNext())
 
-		return null
+		return value
 	}
 
 	peek() {
-		if (this.#first) {
-			return this.#first.getValue()
-		}
+		if (this.isEmpty()) return null
 
-		return null
+		return this.getFirst().getValue()
 	}
 }
-
-export default Queue
