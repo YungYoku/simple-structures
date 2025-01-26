@@ -9,81 +9,57 @@ class ListNode {
 
 class List {
 	#first = null
-	#last = null
 
 	isEmpty() {
 		return this.#first === null
 	}
 
-	addToStart(value) {
+	insertFirst(value) {
 		const node = new ListNode(value)
-
-		if (this.isEmpty()) {
-			this.#first = node
-		} else {
-			node.next = this.#first
-
-			if (this.#last === null) {
-				this.#last = this.#first
-			}
-
-			this.#first = node
-		}
-	}
-	addToEnd(value) {
-		const node = new ListNode(value)
-
-		if (this.isEmpty()) {
-			this.#first = node
-		} else {
-			if (this.#last === null) {
-				this.#first.next = node
-				this.#last = node
-			} else {
-				this.#last.next = node
-
-				this.#last = node
-			}
-		}
+		node.next = this.#first
+		this.#first = node
 	}
 
-	get(index) {
-		if (index < 0) throw new Error('Index out of bounds')
+	find(index) {
+		if (this.isEmpty()) return null
 
 		let i = 0
 		for (const item of this) {
 			if (i === index) return item
 			i++
 		}
-	}
-	getFirst() {
-		return this.#first
-	}
-	getLast() {
-		return this.#last
+
+		return null
 	}
 
-	remove(index) {
-		if (index < 0) throw new Error('Index out of bounds')
+	remove(value) {
+		if (this.isEmpty()) return null
 
-		let i = 0
-		let listNode = this.#first
+		let current = this.#first
+		let previous = this.#first
 
-		while (i !== index - 1) {
-			i++
-
-			if (listNode.next) {
-				listNode = listNode.next
-			} else {
-				throw new Error('Index out of bounds')
-			}
+		if (current.value === value) {
+			this.#first = this.#first.next
+			return this.#first
 		}
 
-		listNode.next = listNode.next.next
+		while (current.value !== value) {
+			previous = current
+			current = current.next
+
+			if (current === null) return current
+
+			if (current.value === value) {
+				previous.next = current.next
+				return value
+			}
+		}
 	}
-	removeAll() {
-		this.#first = null
-		this.#last = null
+
+	display() {
+		for (const item of this) {
+			console.log(item)
+		}
 	}
 
 	*[Symbol.iterator]() {
