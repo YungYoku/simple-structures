@@ -1,4 +1,4 @@
-class ListNode {
+export class ListNode {
 	value = null
 	next = null
 
@@ -7,17 +7,17 @@ class ListNode {
 	}
 }
 
-class List {
-	#first = null
+export class List {
+	first = null
 
 	isEmpty() {
-		return this.#first === null
+		return this.first === null
 	}
 
 	insertFirst(value) {
 		const node = new ListNode(value)
-		node.next = this.#first
-		this.#first = node
+		node.next = this.first
+		this.first = node
 	}
 
 	find(index) {
@@ -35,12 +35,12 @@ class List {
 	remove(value) {
 		if (this.isEmpty()) return null
 
-		let current = this.#first
-		let previous = this.#first
+		let current = this.first
+		let previous = this.first
 
 		if (current.value === value) {
-			this.#first = this.#first.next
-			return this.#first
+			this.first = this.first.next
+			return this.first
 		}
 
 		while (current.value !== value) {
@@ -63,7 +63,7 @@ class List {
 	}
 
 	*[Symbol.iterator]() {
-		let listNode = this.#first
+		let listNode = this.first
 
 		while (listNode !== null) {
 			const value = listNode.value
@@ -74,5 +74,3 @@ class List {
 		}
 	}
 }
-
-export default List
