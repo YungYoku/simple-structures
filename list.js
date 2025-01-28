@@ -14,7 +14,7 @@ export class List {
 		return this.first === null
 	}
 
-	insertFirst(value) {
+	insert(value) {
 		const node = new ListNode(value)
 		node.next = this.first
 		this.first = node

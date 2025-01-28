@@ -5,6 +5,7 @@ import { Queue } from './queue.js'
 import { PriorityQueue } from './priorityQueue.js'
 import { List } from './list.js'
 import FirstLastList from './firstLastList.js'
+import SortedList from './sortedList.js'
 
 export {
 	OrderedArray,
@@ -15,5 +16,6 @@ export {
 	Queue,
 	PriorityQueue,
 	List,
-	FirstLastList
+	FirstLastList,
+	SortedList
 }

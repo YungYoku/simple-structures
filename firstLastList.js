@@ -1,10 +1,9 @@
 import { List, ListNode } from './list.js'
 
 class FirstLastList extends List {
-	first = null
 	last = null
 
-	insertFirst(value) {
+	insert(value) {
 		const node = new ListNode(value)
 		node.next = this.first
 		this.first = node
