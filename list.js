@@ -2,7 +2,7 @@ export class ListNode {
 	value = null
 	next = null
 
-	constructor (value) {
+	constructor(value) {
 		this.value = value
 	}
 }
@@ -20,7 +20,21 @@ export class List {
 		this.first = node
 	}
 
-	find(index) {
+	find(value) {
+		if (this.isEmpty()) return null
+
+		let listNode = this.first
+
+		while (listNode !== null) {
+			if (listNode.value === value) return listNode
+
+			listNode = listNode.next
+		}
+
+		return null
+	}
+
+	findByIndex(index) {
 		if (this.isEmpty()) return null
 
 		let i = 0
@@ -62,7 +76,7 @@ export class List {
 		}
 	}
 
-	*[Symbol.iterator]() {
+	* [Symbol.iterator]() {
 		let listNode = this.first
 
 		while (listNode !== null) {

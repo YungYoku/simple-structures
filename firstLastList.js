@@ -1,4 +1,4 @@
-import { List, ListNode } from './list.js'
+import {List, ListNode} from './list.js'
 
 class FirstLastList extends List {
 	last = null
@@ -16,12 +16,10 @@ class FirstLastList extends List {
 	insertLast(value) {
 		const node = new ListNode(value)
 
-		if (this.last === null) {
-			this.last = node
-		} else {
+		if (this.last !== null) {
 			this.last.next = node
-			this.last = node
 		}
+		this.last = node
 
 		if (this.first === null) {
 			this.first = node

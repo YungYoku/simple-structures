@@ -41,9 +41,9 @@ class OrderedArray {
 			if (value < centerValue) right = center - 1
 			else if (value > centerValue) left = center + 1
 			else return {
-				value,
-				index: center
-			}
+					value,
+					index: center
+				}
 		}
 
 		return {
@@ -64,7 +64,7 @@ class OrderedArray {
 		return found.index
 	}
 
-	add (value) {
+	add(value) {
 		const length = this.#array.length
 
 		if (length === 0) {
@@ -105,7 +105,7 @@ class OrderedArray {
 		this.#array[addedIndex ?? 0] = value
 	}
 
-	delete (value) {
+	delete(value) {
 		let length = this.#array.length
 
 		let removed = false
@@ -132,7 +132,7 @@ class OrderedArray {
 		}
 	}
 
-	*[Symbol.iterator]() {
+	* [Symbol.iterator]() {
 		for (const item of this.#array) {
 			yield item
 		}

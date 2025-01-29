@@ -1,6 +1,6 @@
-import { List, ListNode } from './list.js'
+import {List, ListNode} from './list.js'
 
-export default class SortedList extends List{
+export default class SortedList extends List {
 	insert(value) {
 		const node = new ListNode(value)
 
@@ -13,11 +13,10 @@ export default class SortedList extends List{
 		}
 
 		if (previous === null) {
-			node.next = current
 			this.first = node
 		} else {
 			previous.next = node
-			node.next = current
 		}
+		node.next = current
 	}
 }

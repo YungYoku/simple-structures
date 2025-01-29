@@ -1,4 +1,4 @@
-import { Queue, QueueItem } from './queue.js'
+import {Queue, QueueItem} from './queue.js'
 
 export class PriorityQueueItem extends QueueItem {
 	#priority
