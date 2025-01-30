@@ -57,6 +57,54 @@ export default class DoublyLinkedList extends FirstLastList {
 		return null
 	}
 
+	removeFirst(value) {
+		if (this.isEmpty()) return
+
+		if (this.first.next) {
+			this.first.next.previous = null
+		}
+		this.first = this.first.next
+		if (this.first === null) {
+			this.last = null
+		}
+	}
+
+	removeLast(value) {
+		if (this.isEmpty()) return
+
+		if (this.last.previous) {
+			this.last.previous.next = null
+		}
+		this.last = this.last.previous
+		if (this.last === null) {
+			this.first = null
+		}
+	}
+
+	remove(value) {
+		if (this.isEmpty()) return
+
+		const node = this.find(value)
+		if (node === null) return null
+
+		if (node && (node.next || node.previous)) {
+			if (node.next) {
+				node.next.previous = node.previous
+			} else {
+				this.last = node.previous
+			}
+
+			if (node.previous) {
+				node.previous.next = node.next
+			} else {
+				this.first = node.next
+			}
+		} else {
+			this.first = null
+			this.last = null
+		}
+	}
+
 	displayReverse() {
 		let current = this.last
 
