@@ -7,6 +7,7 @@ import {List} from './list.js'
 import FirstLastList from './firstLastList.js'
 import SortedList from './sortedList.js'
 import DoublyLinkedList from './doublyLinkedList.js'
+import {mergeSort} from './mergeSort.js'
 
 export {
 	OrderedArray,
@@ -19,5 +20,6 @@ export {
 	List,
 	FirstLastList,
 	SortedList,
-	DoublyLinkedList
+	DoublyLinkedList,
+	mergeSort
 }
